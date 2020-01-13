@@ -1,0 +1,27 @@
+apiVersion: v1
+baseDomain: clustership.com
+compute:
+- hyperthreading: Enabled
+  name: worker
+  replicas: 0
+controlPlane:
+  hyperthreading: Enabled
+  name: master
+  replicas: 3
+metadata:
+  name: ocpforum-cluster
+networking:
+  clusterNetworks:
+  - cidr: 10.128.0.0/14
+    hostPrefix: 23
+  machineCIDR: 10.126.72.192/27
+  serviceNetwork:
+  - 172.30.0.0/16
+  networkType: OpenShiftSDN
+platform:
+  vsphere:
+    vcenter: ocppoc-vc.redhat.local
+    username: Administrator@vsphere.local
+    password: 'XXXXXX'
+    datacenter: datacenter-par01
+    defaultDatastore: management-share
